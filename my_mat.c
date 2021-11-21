@@ -1,4 +1,5 @@
-#include <stdio.h>
+
+ #include <stdio.h>
 #include <limits.h>
 
 #define N 10
@@ -13,7 +14,7 @@ int predecessor[N];   /*predecessor of each vertex in shortest path*/
 int pathLength[N];
 int status[N];
 
-int mat[N][N]
+int mat[N][N];
 
 void buildGraph()
 {
@@ -22,7 +23,7 @@ void buildGraph()
     {
         for (j = 0; j < N; j++)
         {
-            scanf("%d",mat[i][j]);
+            scanf("%d",&mat[i][j]);
         } 
     }
 }
@@ -37,6 +38,22 @@ void isThereConnection(){
         printf("False\n");
     }
 }
+
+int min_temp( )
+{
+        int i;
+        int min = infinity;
+        int k = NIL;
+        for(i=0;i<N;i++)
+        {
+                if(status[i] == TEMP && pathLength[i] < min)
+                {
+                        min = pathLength[i];
+                        k = i;
+                }
+        }
+        return k;
+}/*End of min_temp( )*/
 
 
 void Dijkstra( int s)
@@ -64,7 +81,7 @@ void Dijkstra( int s)
 
                 status[current] = PERM;
 
-                for(i=0; i<n; i++)
+                for(i=0; i<N; i++)
                 {
                         /*Checks for adjacent temporary vertices */
                         if ( adj[current][i] !=0 && status[i] == TEMP )
@@ -105,10 +122,12 @@ void shortPath(){
     Dijkstra(x);
 
     if(x == y){
-        printf(-1);
+        printf("-1\n");
     }
     else{
         findPath(x,y);
     }
   
 }
+
+
