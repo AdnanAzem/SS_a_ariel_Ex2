@@ -1,5 +1,5 @@
-#ifndef _my_mat
-#define _my_mat
+#ifndef my_mat
+#define my_mat
 #include <stdio.h>
 void isThereConnection();
 void buildGraph();
