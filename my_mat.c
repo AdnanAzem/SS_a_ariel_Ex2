@@ -1,5 +1,5 @@
-
- #include <stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <limits.h>
 
 #define N 10
@@ -9,29 +9,36 @@
 #define infinity 9999
 #define NIL -1
 
-int adj[N][N];
+//int adj[N][N];
+int** adj;
 int predecessor[N];   /*predecessor of each vertex in shortest path*/
 int pathLength[N];
 int status[N];
 
-int mat[N][N];
+//int mat[N][N];
 
 void buildGraph()
 {
-    int i, j;
-    for (i = 0; i < N; i++)
+
+        adj = (int**)malloc(N * sizeof(int*));
+    for(int i = 0; i < N; i++)
     {
-        for (j = 0; j < N; j++)
+        adj[i] = (int*)malloc(N * sizeof(int));
+    }
+
+    for(int i = 0; i < N; i++)
+    {
+        for(int j = 0; j < N; j++)
         {
-            scanf("%d",&mat[i][j]);
-        } 
+            scanf("%d", &adj[i][j]);
+        }
     }
 }
 
 void isThereConnection(){
     int x,y;
     scanf("%d%d",&x, &y);
-    if(mat[x][y] != 0){
+    if(adj[x][y] != 0){
         printf("True\n");
     }
     else{
@@ -129,5 +136,3 @@ void shortPath(){
     }
   
 }
-
-
