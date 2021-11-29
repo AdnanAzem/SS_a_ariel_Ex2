@@ -66,5 +66,6 @@ void isThereConnection(){
     }
     else{
         printf("False\n");
+    }
 }
         
